@@ -10,6 +10,20 @@ import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'db',
+      port: 5432,
+      username: 'postgres',
+      password: 'root',
+      database: 'blog-uoc-project',
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: false,
+      migrationsRun: true,
+      logging: true,
+      migrations: ['dist/migrations/**/*{.ts,.js}'],
+      cli: {
+        migrationsDir: './migrations',
+      },
       keepConnectionAlive: true,
       autoLoadEntities: true,
     }),
