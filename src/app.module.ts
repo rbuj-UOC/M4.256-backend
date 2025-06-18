@@ -11,11 +11,11 @@ import { UsersModule } from './users/users.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'db',
+      host: process.env.DB_HOST || 'db',
       port: 5432,
-      username: 'postgres',
-      password: 'root',
-      database: 'blog-uoc-project',
+      username: process.env.DB_USERNAME || 'postgres',
+      password: process.env.DB_PASSWORD || 'root',
+      database: process.env.DB_DATABASE || 'blog-uoc-project',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: false,
       migrationsRun: true,
